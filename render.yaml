@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ai-quota-backend
+    runtime: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /actuator/health
+    autoDeploy: true
+    envVars:
+      - key: APP_TOKEN_SECRET
+        generateValue: true
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false   # definir con la URL real del frontend en Vercel
+      - key: AI_MOCK_DELAY_MS
+        value: "1200"
+      - key: APP_TIME_ZONE
+        value: America/Bogota
